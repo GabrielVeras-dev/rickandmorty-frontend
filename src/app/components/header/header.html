@@ -1,1 +1,18 @@
-<p>header works!</p>
+<mat-toolbar class="header">
+  <div class="header-logo">
+    <span class="logo-dot"></span>
+    <div>
+      <span class="logo-title">Rick & Morty Explorer</span>
+      <span class="logo-sub">826 characters across the multiverse</span>
+    </div>
+  </div>
+
+  <div class="header-nav">
+    <button mat-button routerLink="/personagens" routerLinkActive="active-link">
+      Characters
+    </button>
+    <button mat-button routerLink="/locais" routerLinkActive="active-link">
+      Locations
+    </button>
+  </div>
+</mat-toolbar>
