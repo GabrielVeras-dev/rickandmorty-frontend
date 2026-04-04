@@ -1,1 +1,10 @@
-<p>personagem-card works!</p>
+<div class="card" [class.selected]="selecionado">
+  <div class="card-img">
+    <img [src]="personagem.image" [alt]="personagem.name" loading="lazy" />
+    <div class="status-dot" [style.background]="getStatusColor()"></div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">{{ personagem.name }}</div>
+    <div class="card-species">{{ personagem.species }}</div>
+  </div>
+</div>

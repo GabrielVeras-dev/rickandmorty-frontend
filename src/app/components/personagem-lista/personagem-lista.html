@@ -1,1 +1,85 @@
-<p>personagem-lista works!</p>
+<div class="container">
+
+  <div class="search-area">
+    <div class="search-bar">
+      <span class="search-icon">⌕</span>
+      <input
+        type="text"
+        placeholder="Search any character..."
+        [(ngModel)]="termoBusca"
+        (ngModelChange)="onBusca()"
+        class="search-input"
+      />
+      <span class="search-hint">real-time search</span>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn all" [class.active]="statusFiltro === ''" (click)="filtrarStatus('')">All</button>
+      <button class="filter-btn alive" [class.active]="statusFiltro === 'alive'" (click)="filtrarStatus('alive')">Alive</button>
+      <button class="filter-btn dead" [class.active]="statusFiltro === 'dead'" (click)="filtrarStatus('dead')">Dead</button>
+      <button class="filter-btn unknown" [class.active]="statusFiltro === 'unknown'" (click)="filtrarStatus('unknown')">Unknown</button>
+    </div>
+  </div>
+
+  @if (info) {
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-val">{{ info.count }}</div>
+      <div class="stat-lbl">Total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">{{ info.pages }}</div>
+      <div class="stat-lbl">Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">{{ paginaAtual }}</div>
+      <div class="stat-lbl">Current Page</div>
+    </div>
+  </div>
+  }
+
+  @if (carregando) {
+  <div class="loading">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+  }
+
+  @if (!carregando && personagens.length === 0) {
+  <div class="empty">
+    <p>No characters found 👽</p>
+  </div>
+  }
+
+  @if (!carregando && personagens.length > 0) {
+  <div class="grid">
+    @for (p of personagens; track p.id; let i = $index) {
+    <app-personagem-card
+      [personagem]="p"
+      [selecionado]="personagemSelecionado?.id === p.id"
+      (click)="selecionarPersonagem(p, i)">
+    </app-personagem-card>
+
+    @if (deveExibirDetalhe(i)) {
+    <div class="detalhe-wrapper">
+      <app-personagem-detalhe [personagem]="personagemSelecionado!"></app-personagem-detalhe>
+    </div>
+    }
+    }
+  </div>
+  }
+
+  @if (info && info.pages > 1) {
+  <div class="pagination">
+    <button class="page-btn" [disabled]="paginaAtual === 1" (click)="mudarPagina(paginaAtual - 1)">&lt;</button>
+    @for (p of getPaginas(); track p) {
+    @if (p === -1) {
+    <span class="page-dots">...</span>
+    } @else {
+    <button class="page-btn" [class.active]="p === paginaAtual" (click)="mudarPagina(p)">{{ p }}</button>
+    }
+    }
+    <button class="page-btn" [disabled]="paginaAtual === info.pages" (click)="mudarPagina(paginaAtual + 1)">&gt;</button>
+  </div>
+  }
+
+</div>

@@ -1,0 +1,84 @@
+.detalhe-panel {
+  background: #0d0d1a;
+  border: 1px solid #2d1f5e;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.detalhe-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #4ade80;
+  flex-shrink: 0;
+}
+
+.detalhe-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalhe-info {
+  flex: 1;
+}
+
+.detalhe-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.detalhe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid;
+  margin-bottom: 16px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.detalhe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.detalhe-item {
+  background: #13131f;
+  border-radius: 6px;
+  padding: 8px 12px;
+  border: 1px solid #2d1f5e;
+}
+
+.detalhe-key {
+  font-size: 10px;
+  color: #7c6fcd;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.detalhe-val {
+  font-size: 13px;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,1 +1,47 @@
-<p>local-lista works!</p>
+<div class="container">
+
+  @if (carregando) {
+  <div class="loading">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+  }
+
+  @if (!carregando && locais.length === 0) {
+  <div class="empty">
+    <p>No locations found 🪐</p>
+  </div>
+  }
+
+  @if (!carregando && locais.length > 0) {
+  <div class="grid">
+    @for (local of locais; track local.id) {
+    <div class="local-card">
+      <div class="local-icon">🪐</div>
+      <div class="local-name">{{ local.name }}</div>
+      <div class="local-info">
+        <span class="local-badge type">{{ local.type || 'Unknown' }}</span>
+        <span class="local-badge dimension">{{ local.dimension || 'Unknown' }}</span>
+      </div>
+      <div class="local-residents">
+        {{ local.residents.length }} residents
+      </div>
+    </div>
+    }
+  </div>
+  }
+
+  @if (info && info.pages > 1) {
+  <div class="pagination">
+    <button class="page-btn" [disabled]="paginaAtual === 1" (click)="mudarPagina(paginaAtual - 1)">&lt;</button>
+    @for (p of getPaginas(); track p) {
+    @if (p === -1) {
+    <span class="page-dots">...</span>
+    } @else {
+    <button class="page-btn" [class.active]="p === paginaAtual" (click)="mudarPagina(p)">{{ p }}</button>
+    }
+    }
+    <button class="page-btn" [disabled]="paginaAtual === info.pages" (click)="mudarPagina(paginaAtual + 1)">&gt;</button>
+  </div>
+  }
+
+</div>

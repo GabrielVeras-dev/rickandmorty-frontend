@@ -1,1 +1,44 @@
-<p>personagem-detalhe works!</p>
+<div class="detalhe-panel">
+  <div class="detalhe-avatar">
+    <img [src]="personagem.image" [alt]="personagem.name" />
+  </div>
+
+  <div class="detalhe-info">
+    <div class="detalhe-name">{{ personagem.name }}</div>
+
+    <div class="detalhe-badge"
+         [style.color]="getStatusColor()"
+         [style.background]="getStatusBg()"
+         [style.borderColor]="getStatusColor()">
+      <div class="badge-dot" [style.background]="getStatusColor()"></div>
+      {{ personagem.status }}
+    </div>
+
+    <div class="detalhe-grid">
+      <div class="detalhe-item">
+        <div class="detalhe-key">Species</div>
+        <div class="detalhe-val">{{ personagem.species }}</div>
+      </div>
+      <div class="detalhe-item">
+        <div class="detalhe-key">Gender</div>
+        <div class="detalhe-val">{{ personagem.gender }}</div>
+      </div>
+      <div class="detalhe-item">
+        <div class="detalhe-key">Type</div>
+        <div class="detalhe-val">{{ personagem.type || '—' }}</div>
+      </div>
+      <div class="detalhe-item">
+        <div class="detalhe-key">Origin</div>
+        <div class="detalhe-val">{{ personagem.origin.name }}</div>
+      </div>
+      <div class="detalhe-item">
+        <div class="detalhe-key">Location</div>
+        <div class="detalhe-val">{{ personagem.location.name }}</div>
+      </div>
+      <div class="detalhe-item">
+        <div class="detalhe-key">Episodes</div>
+        <div class="detalhe-val">{{ personagem.episode.length }} episodes</div>
+      </div>
+    </div>
+  </div>
+</div>
