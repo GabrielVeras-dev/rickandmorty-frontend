@@ -6,6 +6,104 @@
     <p class="hero-sub">Uma aplicação full-stack desenvolvida para portfólio</p>
   </div>
 
+  <div class="saiba-mais-area">
+    <button class="saiba-mais-btn" (click)="toggleSaibaMais()">
+      {{ saibaMais ? 'Fechar ▲' : 'Saiba mais sobre o projeto ▼' }}
+    </button>
+
+    @if (saibaMais) {
+    <div class="saiba-mais-content">
+
+      <div class="sm-section">
+        <h3 class="sm-title">O que é este projeto?</h3>
+        <p class="sm-text">
+          O Rick & Morty Explorer é uma aplicação full-stack desenvolvida do zero como projeto de portfólio,
+          com o objetivo de demonstrar conhecimentos em desenvolvimento backend com Java e Spring Boot,
+          desenvolvimento frontend com Angular, integração entre sistemas via API REST, boas práticas de
+          código, testes unitários e deploy em produção.
+        </p>
+        <p class="sm-text">
+          A aplicação consome a <strong>Rick and Morty API</strong> - uma API pública e gratuita que disponibiliza
+          dados sobre personagens, episódios e locais da série animada Rick and Morty. Em vez de consumir
+          diretamente no frontend, foi criada uma camada de backend própria em Java que atua como intermediária,
+          adicionando cache, validações e documentação.
+        </p>
+      </div>
+
+      <div class="sm-section">
+        <h3 class="sm-title">Como o backend funciona?</h3>
+        <p class="sm-text">
+          O backend foi desenvolvido com <strong>Java 21</strong> e <strong>Spring Boot 4.0.3</strong>,
+          seguindo a arquitetura em camadas: Controller → Service → Client. O <strong>RestClient</strong>
+          - client HTTP moderno introduzido no Spring 6.1, é responsável por consumir a API externa.
+          Cada chamada passa pelo <strong>Spring Cache com Caffeine</strong>, que armazena os resultados
+          em memória por 10 minutos, evitando chamadas repetidas e melhorando a performance.
+        </p>
+        <p class="sm-text">
+          O <strong>GlobalExceptionHandler</strong> intercepta todos os erros e retorna respostas JSON
+          padronizadas com status HTTP correto, em vez de stack traces. A documentação dos endpoints é
+          gerada automaticamente pelo <strong>Swagger/OpenAPI</strong> e pode ser acessada via interface
+          interativa. Os <strong>testes unitários</strong> com JUnit 5 e Mockito cobrem os principais
+          cenários do service, incluindo validações de entrada e comportamento esperado.
+        </p>
+      </div>
+
+      <div class="sm-section">
+        <h3 class="sm-title">Como o frontend funciona?</h3>
+        <p class="sm-text">
+          O frontend foi desenvolvido com <strong>Angular 19</strong> e <strong>Angular Material</strong>,
+          com tema escuro espacial inspirado no universo da série. Os services encapsulam todas as chamadas
+          HTTP ao backend usando o <strong>HttpClient</strong> do Angular, retornando Observables que os
+          componentes assinam via subscribe. O <strong>FormsModule</strong> com ngModel permite a busca
+          em tempo real com debounce de 500ms, a chamada à API só é disparada quando o usuário para de digitar,
+          evitando requisições desnecessárias.
+        </p>
+        <p class="sm-text">
+          O painel de detalhes do personagem aparece dinamicamente dentro do grid, logo abaixo da linha
+          do card clicado, calculando a posição com base no índice do item e no número de colunas da tela.
+          O sistema é responsivo e ajusta o número de colunas automaticamente conforme o tamanho da tela,
+          garantindo que o painel sempre apareça no lugar correto em qualquer dispositivo.
+        </p>
+      </div>
+
+      <div class="sm-section">
+        <h3 class="sm-title">Como está hospedado?</h3>
+        <p class="sm-text">
+          O backend roda em um container <strong>Docker</strong> na <strong>Oracle Cloud Free Tier</strong>,
+          em uma VM Ubuntu 22.04 com 1 OCPU e 1GB de RAM. O <strong>Nginx</strong> atua como proxy reverso,
+          redirecionando as requisições da porta 443 (HTTPS) para a porta 8080 do container. O certificado
+          SSL é gratuito, gerado pelo <strong>Let's Encrypt</strong> via Certbot, com renovação automática
+          configurada. O domínio é gerenciado pelo <strong>DuckDNS</strong>, um serviço gratuito de DNS dinâmico.
+        </p>
+        <p class="sm-text">
+          O frontend está hospedado no <strong>Vercel</strong>, que detecta automaticamente os commits no
+          GitHub e faz o redeploy sem nenhuma configuração adicional. A comunicação entre frontend e backend
+          é liberada via <strong>CORS</strong> configurado no Spring Boot, permitindo apenas as origens
+          autorizadas.
+        </p>
+      </div>
+
+      <div class="sm-section">
+        <h3 class="sm-title">Principais desafios</h3>
+        <p class="sm-text">
+          O maior desafio foi o deploy do backend, onde foram testadas quatro plataformas diferentes antes de
+          chegar à solução final. O Railway tinha trial limitado, o Render dormia após inatividade, o Fly.io
+          expirava em 7 dias. A Oracle Cloud resolveu todos esses problemas, mas exigiu configurar manualmente
+          a VM, o Docker, o Nginx e o SSL, um processo que ensinou muito sobre infraestrutura em nuvem e DevOps.
+        </p>
+        <p class="sm-text">
+          Outro desafio foi o bloqueio de <strong>Mixed Content</strong>, o frontend em HTTPS não conseguia
+          chamar o backend em HTTP. Isso só foi resolvido após configurar o domínio com HTTPS via Let's Encrypt.
+          O <strong>Zone.js</strong> também causou um erro silencioso no Angular 19, que não o inclui mais
+          por padrão e precisa ser configurado manualmente. O <strong>Lombok</strong> teve incompatibilidade
+          com o Spring Boot 4.0.3, exigindo que todos os getters, setters e construtores fossem escritos manualmente.
+        </p>
+      </div>
+
+    </div>
+    }
+  </div>
+
   <div class="expiracao-banner">
     <span class="exp-icon">⚠️</span>
     <div>

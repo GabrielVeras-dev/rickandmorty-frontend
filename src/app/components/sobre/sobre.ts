@@ -13,4 +13,9 @@ export class Sobre {
   diasRestantes = Math.ceil(
     (this.expiracao.getTime() - this.hoje.getTime()) / (1000 * 60 * 60 * 24)
   );
+  saibaMais = false;
+
+  toggleSaibaMais(): void {
+    this.saibaMais = !this.saibaMais;
+  }
 }
