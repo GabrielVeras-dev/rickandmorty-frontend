@@ -25,11 +25,26 @@ export class PersonagemLista implements OnInit {
   buscaTimeout: any;
   colunas = 5;
 
-  constructor(private personagemService: PersonagemService) {}
+ngOnInit(): void {
+  this.atualizarColunas();
+  window.addEventListener('resize', () => this.atualizarColunas());
+  this.carregarPersonagens();
+}
 
-  ngOnInit(): void {
-    this.carregarPersonagens();
+atualizarColunas(): void {
+  const largura = window.innerWidth;
+  if (largura < 600) {
+    this.colunas = 2;
+  } else if (largura < 900) {
+    this.colunas = 3;
+  } else if (largura < 1200) {
+    this.colunas = 4;
+  } else {
+    this.colunas = 5;
   }
+}
+
+  constructor(private personagemService: PersonagemService) {}
 
   carregarPersonagens(): void {
     this.carregando = true;

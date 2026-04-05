@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 16px !important;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -22,6 +22,7 @@
   border-radius: 50%;
   background: #4ade80;
   display: block;
+  flex-shrink: 0;
 }
 
 .logo-title {
@@ -43,6 +44,7 @@
 .header-nav {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .header-nav button {
@@ -56,4 +58,20 @@
   background: #4ade80 !important;
   color: #052e16 !important;
   border-color: #4ade80 !important;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logo-sub {
+    display: none;
+  }
+
+  .logo-title {
+    font-size: 13px;
+  }
+
+  .header-nav button {
+    font-size: 11px;
+    padding: 0 10px !important;
+  }
 }

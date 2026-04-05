@@ -1,5 +1,5 @@
 .container {
-  padding: 20px 24px;
+  padding: 16px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -87,6 +87,7 @@
   justify-content: center;
   gap: 6px;
   padding: 20px 0;
+  flex-wrap: wrap;
 }
 
 .page-btn {
@@ -121,4 +122,16 @@
 .page-dots {
   color: #4a4272;
   font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+  }
 }
