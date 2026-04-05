@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://163.176.187.83:8080/api'
+  apiUrl: 'https://gabrielveras-api.duckdns.org/api'
 };
