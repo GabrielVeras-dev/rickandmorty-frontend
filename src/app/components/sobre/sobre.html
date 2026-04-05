@@ -1,0 +1,185 @@
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-icon">🛸</div>
+    <h1 class="hero-title">Rick & Morty Explorer</h1>
+    <p class="hero-sub">Uma aplicação full-stack desenvolvida para portfólio</p>
+  </div>
+
+  <div class="expiracao-banner">
+    <span class="exp-icon">⚠️</span>
+    <div>
+      <div class="exp-title">Aviso de hospedagem</div>
+      <div class="exp-text">
+        Este projeto está hospedado gratuitamente na Oracle Cloud Free Tier.
+        O certificado SSL expira em <strong>04/05/2026</strong> —
+        <strong>{{ diasRestantes }} dias restantes</strong>.
+        Após essa data o backend pode ficar indisponível temporariamente.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🚀 Como funciona</h2>
+    <div class="cards-row">
+      <div class="info-card">
+        <div class="info-icon">☕</div>
+        <div class="info-label">Backend</div>
+        <div class="info-text">
+          API REST desenvolvida em Java 21 com Spring Boot 4.0.3.
+          Consome a Rick and Morty API pública e expõe endpoints próprios
+          com cache em memória via Spring Cache + Caffeine,
+          evitando chamadas repetidas à API externa.
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🅰️</div>
+        <div class="info-label">Frontend</div>
+        <div class="info-text">
+          Interface desenvolvida em Angular 19 com Angular Material.
+          Consome o backend via HTTP, exibe os personagens em cards com
+          foto real, permite busca em tempo real, filtros por status e
+          navegação entre locais e planetas.
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">☁️</div>
+        <div class="info-label">Hospedagem</div>
+        <div class="info-text">
+          Backend rodando em container Docker na Oracle Cloud Free Tier,
+          com Nginx como proxy reverso e certificado SSL gratuito via
+          Let's Encrypt. Frontend hospedado no Vercel com deploy automático
+          via GitHub.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🛠️ Tecnologias utilizadas</h2>
+    <div class="tech-grid">
+      <div class="tech-badge backend">Java 21</div>
+      <div class="tech-badge backend">Spring Boot 4.0.3</div>
+      <div class="tech-badge backend">RestClient</div>
+      <div class="tech-badge backend">Spring Cache</div>
+      <div class="tech-badge backend">Caffeine</div>
+      <div class="tech-badge backend">Swagger/OpenAPI</div>
+      <div class="tech-badge backend">JUnit 5</div>
+      <div class="tech-badge backend">Mockito</div>
+      <div class="tech-badge frontend">Angular 19</div>
+      <div class="tech-badge frontend">Angular Material</div>
+      <div class="tech-badge frontend">TypeScript</div>
+      <div class="tech-badge frontend">RxJS</div>
+      <div class="tech-badge infra">Docker</div>
+      <div class="tech-badge infra">Nginx</div>
+      <div class="tech-badge infra">Oracle Cloud</div>
+      <div class="tech-badge infra">Let's Encrypt</div>
+      <div class="tech-badge infra">Vercel</div>
+      <div class="tech-badge infra">DuckDNS</div>
+    </div>
+    <div class="legend">
+      <span class="tech-badge backend">Backend</span>
+      <span class="tech-badge frontend">Frontend</span>
+      <span class="tech-badge infra">Infraestrutura</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">⚠️ Dificuldades encontradas</h2>
+    <div class="dificuldades">
+
+      <div class="dif-item">
+        <div class="dif-num">01</div>
+        <div class="dif-content">
+          <div class="dif-title">Incompatibilidade do Lombok com Spring Boot 4.0.3</div>
+          <div class="dif-text">
+            O Lombok não funcionou corretamente com o Spring Boot 4.0.3 no IntelliJ,
+            impedindo a geração automática de getters, setters e construtores.
+            A solução foi escrever todos os métodos manualmente, o que na prática
+            ajudou a entender melhor o que o Lombok faz por baixo dos panos.
+          </div>
+        </div>
+      </div>
+
+      <div class="dif-item">
+        <div class="dif-num">02</div>
+        <div class="dif-content">
+          <div class="dif-title">Deploy do backend - múltiplas tentativas</div>
+          <div class="dif-text">
+            O Railway foi a primeira opção mas o trial expirou. Em seguida passei a usar o
+            Render, mas ele tinha problema de sleep após inatividade. Vi sobre o Fly.io,
+            mas ele durava só 7 dias de teste gratuito.
+            A solução final foi a Oracle Cloud Free Tier com Docker, Nginx e
+            certificado SSL via Let's Encrypt, solução mais robusta e um mês de teste gratuito.
+          </div>
+        </div>
+      </div>
+
+      <div class="dif-item">
+        <div class="dif-num">03</div>
+        <div class="dif-content">
+          <div class="dif-title">Mixed Content - HTTP vs HTTPS</div>
+          <div class="dif-text">
+            O frontend no Vercel usa HTTPS mas o backend estava em HTTP puro.
+            Navegadores modernos bloqueiam chamadas HTTP dentro de páginas HTTPS.
+            A solução foi configurar o Nginx com proxy reverso e certificado SSL
+            gratuito via Let's Encrypt, deixando o backend acessível via HTTPS.
+          </div>
+        </div>
+      </div>
+
+      <div class="dif-item">
+        <div class="dif-num">04</div>
+        <div class="dif-content">
+          <div class="dif-title">CORS entre frontend e backend</div>
+          <div class="dif-text">
+            Configurar o CORS corretamente para permitir que o Angular em
+            produção no Vercel se comunique com o backend foi um desafio,
+            especialmente após cada troca de plataforma de hospedagem que
+            gerava uma nova URL que precisava ser adicionada ao CorsConfig.
+          </div>
+        </div>
+      </div>
+
+      <div class="dif-item">
+        <div class="dif-num">05</div>
+        <div class="dif-content">
+          <div class="dif-title">Zone.js no Angular 19</div>
+          <div class="dif-text">
+            O Angular 19 não inclui o Zone.js por padrão — ele precisa ser
+            instalado e configurado manualmente no angular.json via polyfills.
+            Isso causou um erro de inicialização que demorou para ser identificado.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🔗 Links do projeto</h2>
+    <div class="links-grid">
+      <a href="https://github.com/GabrielVeras-dev/rickandmorty-api" target="_blank" class="link-card">
+        <div class="link-icon">💻</div>
+        <div class="link-label">Backend — GitHub</div>
+        <div class="link-url">rickandmorty-api</div>
+      </a>
+      <a href="https://github.com/GabrielVeras-dev/rickandmorty-frontend" target="_blank" class="link-card">
+        <div class="link-icon">💻</div>
+        <div class="link-label">Frontend — GitHub</div>
+        <div class="link-url">rickandmorty-frontend</div>
+      </a>
+      <a href="https://gabrielveras-api.duckdns.org/api/personagens" target="_blank" class="link-card">
+        <div class="link-icon">🌐</div>
+        <div class="link-label">API em produção</div>
+        <div class="link-url">gabrielveras-api.duckdns.org</div>
+      </a>
+      <a href="https://gabrielveras-api.duckdns.org/swagger-ui/index.html" target="_blank" class="link-card">
+        <div class="link-icon">📄</div>
+        <div class="link-label">Documentação Swagger</div>
+        <div class="link-url">swagger-ui/index.html</div>
+      </a>
+    </div>
+  </div>
+
+</div>
