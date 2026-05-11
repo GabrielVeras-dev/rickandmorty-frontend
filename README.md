@@ -15,7 +15,7 @@ Frontend desenvolvido em **Angular 17** que consome o backend próprio da Rick a
 | Repositório | Descrição |
 |------------|-----------|
 | [rickandmorty-frontend](https://github.com/GabrielVeras-dev/rickandmorty-frontend) | Este repositório — Frontend Angular |
-| [rick-and-morty-api](https://github.com/GabrielVeras-dev) | Backend Spring Boot que a aplicação consome |
+| [rick-and-morty-api](https://github.com/GabrielVeras-dev/rickandmorty-api) | Backend Spring Boot que a aplicação consome |
 
 ---
 
